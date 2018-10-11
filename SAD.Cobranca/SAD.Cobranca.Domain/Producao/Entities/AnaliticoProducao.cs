@@ -34,5 +34,5 @@
         public decimal PercCpcNovo { get; set; }
         public decimal PercCpcRecente { get; set; }
         public decimal PercProm { get; set; }
-    }
+    } 
 }
