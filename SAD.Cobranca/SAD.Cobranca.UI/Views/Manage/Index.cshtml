@@ -1,0 +1,32 @@
+﻿@model SAD.Cobranca.UI.Models.IndexViewModel
+@{
+    ViewBag.Title = "Configurações | SAD";
+}
+
+<div class="container-d">
+    <div class="container">
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-12 px-0">
+                <p class="text-success">@ViewBag.StatusMessage</p>
+
+                <div class="col-lg-12 px-0">
+                    <h4>Altere suas configurações de conta</h4>
+                    <dl class="row">
+                        <dd class="col-lg-12"><a href="@Url.Action("ChangePassword","Manage")">Alterar senha</a></dd>
+                    </dl>
+                </div>
+                <div class="col-lg-12 px-0">
+                    <h4>Configurações de segurança</h4>
+                    <dl class="row">
+                        <dd class="col-lg-12"><a href="@Url.Action("Index", "Account", new {page=1})">Usuários</a></dd>
+                        <dd class="col-lg-12"><a href="@Url.Action("Index", "Claims", new {page=1})">Claims</a></dd>
+                        <dd class="col-lg-12"><a href="@Url.Action("Index", "UsuarioClaims", new {page=1})">Usuários com claims</a></dd>
+                    </dl>
+                </div>
+                <div class="col-lg-12 px-0">
+                    <h4>Admin</h4>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

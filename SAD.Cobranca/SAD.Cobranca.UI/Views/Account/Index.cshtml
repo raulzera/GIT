@@ -1,0 +1,74 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc
+@using X.PagedList.Mvc.Bootstrap4
+@model IPagedList<SAD.Cobranca.UI.Models.ApplicationUser>
+@{
+    ViewBag.Title = "Usuários | SAD";
+}
+<div class="container-d">
+    <div class="container">
+        <div class="row pt-5">
+            <div class="align-content-lg-start">
+                <hgroup class="mb-3">
+                    <h1 class="col-12 font-weight-bold px-0">USUÁRIOS</h1>
+                    <h5 class="col-12 font-weight-light px-0">Segue lista com todos usuários cadastrados</h5>
+                </hgroup>
+            </div>
+            <div class="flex-md-wrap col-sm-12 col-lg-auto px-0 ml-auto">
+                <a class="btn btn-outline-primary rounded-0 text-uppercase font-weight-bold f-size-5 ml-auto" href="@Url.Action("Register", "Account")">Registrar novo usuário</a>
+            </div>
+        </div>
+        @Html.Partial("_MenuUsuarios")
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-12 px-0">
+                @if (Model != null && Model.Any())
+                {
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th class="w-25 bg-white text-center"><i class="fas fa-th-large fa-sm"></i></th>
+                                <th class="w-25 bg-white text-uppercase f-size-6">E-mail</th>
+                                <th class="w-25 bg-white text-uppercase f-size-6">Username</th>
+                                <th class="w-25 bg-white text-uppercase f-size-6">Bloqueado/ Sem bloqueio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="bg-white">
+                                    <td class="w-25 f-size-6 text-center">
+                                        <a class="text-uppercase" href="@Url.Action("UserClaimDetails", "UsuarioClaims", new {page=1, id=item.Id})">Claims</a>
+                                        <a class="text-uppercase" href="@Url.Action("ResetPassword", "Account", new {id=item.Id})">Resetar</a>
+                                        @if (item.LockoutEndDateUtc != null && item.LockoutEndDateUtc.Value > DateTime.Now)
+                                        {
+                                            <a class="text-uppercase" href="@Url.Action("UnlockUser", "Account", new {id=item.Id})">Desbloquear</a>
+                                        }
+                                        else
+                                        {
+                                            <a class="text-uppercase" href="@Url.Action("LockUser", "Account", new {id=item.Id})">Bloquear</a>
+                                        }
+                                        <a class="text-uppercase" href="@Url.Action("Delete", "Account", new {id=item.Id})">Remover</a>
+                                    </td>
+                                    <td class="w-25 f-size-6">@item.Email</td>
+                                    <td class="w-25 f-size-6">@item.UserName</td>
+                                    <td class="w-25 f-size-6">@item.LockoutEndDateUtc</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="alert rounded-0 bg-info box-shadow px-0">
+                        <h5 class="text-white text-center text-uppercase p-2"><i class="fas fa-exclamation-circle"></i> Nenhum usuário encontrado.</h5>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-12 px-0">
+                <div class="row justify-content-lg-center">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), Bootstrap4PagedListRenderOptions.Default)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+﻿@model SAD.Cobranca.Application.Identity.UsuarioClaims.UsuarioClaimsViewModel
+@{
+    ViewBag.Title = "Detalhes da claim selecionada | SAD";
+}
+
+<div class="container-d">
+    <div class="container">
+        <div class="row pt-5">
+            <hgroup class="mb-3">
+                <h1 class="col-12 font-weight-bold px-0">DETALHES DA CLAIM SELECIONADA</h1>
+                <h5 class="col-12 font-weight-light px-0">Segue detalhes da claim selecionada</h5>
+            </hgroup>
+        </div>
+        @Html.Partial("_MenuUsuarios")
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-6 col-sm-12 px-0">
+                <dl class="row no-gutters">
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.Username)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.Username)</dd>
+
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.ClaimType)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.ClaimType)</dd>
+
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.ClaimValue)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.ClaimValue)</dd>
+                </dl>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a class="btn btn-link" href="@Url.Action("UserClaimDetails","UsuarioClaims",new {page=1,id=Model.UserId})">Voltar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

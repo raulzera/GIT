@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{260B7FA4-F920-49D8-B09F-A5B3DC9C2E1E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SAD.Cobranca.Domain</RootNamespace>
+    <AssemblyName>SAD.Cobranca.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Identity\Claim\Claims.cs" />
+    <Compile Include="Identity\Claim\ClaimsService.cs" />
+    <Compile Include="Identity\Claim\Commands\EditarClaimsCommand.cs" />
+    <Compile Include="Identity\Claim\Commands\ListaClaimsCommandOutput.cs" />
+    <Compile Include="Identity\Claim\Commands\RegistrarClaimsCommand.cs" />
+    <Compile Include="Identity\Claim\Interfaces\IClaimsRepository.cs" />
+    <Compile Include="Identity\Claim\Interfaces\IClaimsService.cs" />
+    <Compile Include="Identity\Claim\Validations\ClaimsAptoParaRegistroValidation.cs" />
+    <Compile Include="Identity\Claim\Validations\ClaimsConsistenteValidation.cs" />
+    <Compile Include="Identity\UsuarioClaim\Commands\EditarUsuarioClaimCommand.cs" />
+    <Compile Include="Identity\UsuarioClaim\Commands\ListarUsuarioClaimCommandOutput.cs" />
+    <Compile Include="Identity\UsuarioClaim\Commands\RegistrarUsuarioClaimCommand.cs" />
+    <Compile Include="Identity\UsuarioClaim\Interfaces\IUsuarioClaimsRepository.cs" />
+    <Compile Include="Identity\UsuarioClaim\Interfaces\IUsuarioClaimsService.cs" />
+    <Compile Include="Identity\UsuarioClaim\Services\UsuarioClaimService.cs" />
+    <Compile Include="Identity\UsuarioClaim\UsuarioClaim.cs" />
+    <Compile Include="Identity\UsuarioClaim\Validations\UsuarioClaimAptoParaRegistroValidation.cs" />
+    <Compile Include="Identity\UsuarioClaim\Validations\UsuarioClaimConsistenteValidation.cs" />
+    <Compile Include="Identity\Usuario\Usuario.cs" />
+    <Compile Include="Producao\Entities\AnaliticoProducao.cs" />
+    <Compile Include="Producao\Interfaces\IAnaliticoProducaoRepository.cs" />
+    <Compile Include="Producao\Services\IAnaliticoProducaoService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Identity\UsuarioClaim\Handlers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FluentValidation, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentValidation.8.0.100\lib\net45\FluentValidation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.ComponentModel.Primitives, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.3.0\lib\net45\System.ComponentModel.Primitives.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CC.SAD.Cobranca.Domain.Core\SAD.Cobranca.Domain.Core.csproj">
+      <Project>{6966fc19-998e-4c86-b617-88c437caf426}</Project>
+      <Name>SAD.Cobranca.Domain.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

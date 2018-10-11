@@ -1,0 +1,34 @@
+﻿@if (ViewData.ModelState[""] != null && ViewData.ModelState[""].Errors.Any())
+{
+    <div class="alert alert-danger alert-error">
+        <button type="button" class="close text-white" data-dismiss="alert">x</button>
+        <h3 class="text-center">ERRO</h3>
+        <h5 class="text-center"><strong>Oooops!</strong> Alguma coisa não deu certo :(</h5>
+
+        @Html.ValidationSummary(true)
+    </div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Sucesso))
+{
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <h5>@ViewBag.Sucesso</h5>
+    </div>
+}
+
+@if (TempData["Sucesso"] != null)
+{
+    <div id="success-alert" class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <h5>@TempData["Sucesso"]</h5>
+    </div>
+}
+
+@if (TempData["SucessoRemovido"] != null)
+{
+    <div id="success-removido-alert" class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <h5>@TempData["SucessoRemovido"]</h5>
+    </div>
+}

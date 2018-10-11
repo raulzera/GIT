@@ -1,0 +1,39 @@
+﻿@model SAD.Cobranca.Application.Identity.Claims.ClaimsViewModel
+@{
+    ViewBag.Title = "Remover claim | SAD";
+}
+
+<div class="container-d">
+    <div class="container">
+        <div class="row pt-5">
+            <hgroup class="mb-3">
+                <h1 class="col-12 font-weight-bold px-0">REMOVER CLAIM</h1>
+                <h5 class="col-12 font-weight-light px-0">Confirme a claims abaixo para remover</h5>
+            </hgroup>
+        </div>
+        @Html.Partial("_MenuUsuarios")
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-6 col-sm-12 px-0">
+                <dl class="row no-gutters">
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.Id)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.Id)</dd>
+
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.Name)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.Name)</dd>
+                </dl>
+
+                @using (Html.BeginForm("Delete", "Claims"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            @Html.ActionLink("Voltar", null, null, null, new { href = Request.UrlReferrer, @class = "btn btn-link" })
+                            <input type="submit" value="Remover" class="btn btn-danger cursor-p"/>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

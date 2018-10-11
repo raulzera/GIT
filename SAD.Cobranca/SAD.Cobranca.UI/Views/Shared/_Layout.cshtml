@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="/bsc.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <script src="~/Scripts/moment.min.js"></script>
+    <script src="~/Scripts/moment-with-locales.min.js"></script>
+</head>
+<body class="bg-lightgray">
+    <div class="preloader">
+        <div class="loader"></div>
+    </div>
+    <header>
+        <div class="container container-fluid px-0">
+            <nav class="navbar navbar-expand-lg navbar-light box-shadow border-0 bg-white py-3 mt-lg-4 mt-sm-0">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand">@Html.ActionLink("SAD", "Index", "Home", new { area = "" }, new { @class = "navbar-brand font-weight-bold text-uppercase" })</a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "JuridicoImobiliario")">Início</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                            <div class="dropdown-menu border-top-0 rounded-0 mt-3" aria-labelledby="dropdown01">
+                                <a class="dropdown-item" href="@Url.Action("Index", "TempoMedio")">Tempos médios</a>
+                                <a class="dropdown-item" href="@Url.Action("IndicePagamento", "JuridicoImobiliario")">Indíces</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "Analitico")">Analiticos</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="ml-auto">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <main class="container-fluid">
+        @RenderBody()
+        <input type="hidden" id="success" value="@TempData["success"]" />
+        <input type="hidden" id="info" value="@TempData["info"]" />
+        <input type="hidden" id="warning" value="@TempData["warning"]" />
+        <input type="hidden" id="error" value="@TempData["error"]" />
+        <div id="toTop-container"></div>
+    </main>
+    <footer class="footer bg-white">
+        <div class="row justify-content-lg-center">
+            <div class="col col-lg-1">
+                <img class="py-4 hvr-bounce-out" src="~/Content/Images/crespoecaires.svg" alt="CRESPO E CAIRES" />
+            </div>
+        </div>
+        <div class="row pb-2">
+            <div class="col col-lg-12">
+                <small class="text-center text-muted d-block">CRESPO E CAIRES ADVOGADOS ASSOCIADOS</small>
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script src="~/Scripts/toTop.js"></script>
+<script src="~/Scripts/menufixed-on-scrolling.js"></script>
+<script type="text/javascript">
+    $(window).on('load', function () {
+        $('.preloader').addClass('complete');
+    });
+</script>

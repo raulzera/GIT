@@ -1,0 +1,119 @@
+﻿@model SAD.Cobranca.Application.Identity.UsuarioClaims.UsuarioClaimsViewModel
+@{
+    ViewBag.Title = "Editar claim | SAD";
+}
+<div class="container-d">
+    <div class="container">
+        <div class="row pt-5">
+            <hgroup class="mb-3">
+                <h1 class="col-12 font-weight-bold px-0">EDITAR CLAIM</h1>
+                <h5 class="col-12 font-weight-light px-0">Preencha os campos abaixo para editar a claim do usuário selecionado</h5>
+            </hgroup>
+        </div>
+        @Html.Partial("_MenuUsuarios")
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-6 col-sm-12 px-0">
+                @using (Html.BeginForm("Edit", "UsuarioClaims", FormMethod.Post, new { @class = "", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.UserId)
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            @Html.LabelFor(x => x.Username, new { @class = "col-lg-12 px-0 col-form-label text-uppercase f-size-6" })
+                            <p class="f-size-1">@Html.DisplayFor(x => x.Username)</p>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            @Html.LabelFor(x => x.ClaimType, new { @class = "col-lg-12 px-0 col-form-label text-uppercase f-size-6" })
+                            @Html.DropDownList("ClaimType", null, "Selecione o claim", new { @class = "form-control form-control-lg" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            @Html.LabelFor(x => x.ClaimValue, new { @class = "col-lg-12 px-0 col-form-label text-uppercase f-size-6" })
+                            @Html.TextBoxFor(x => x.ClaimValue, new { @class = "form-control form-control-lg" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <a class="btn btn-link" href="@Url.Action("UserClaimDetails","UsuarioClaims", new {page=1,id=Model.UserId})">Voltar</a>
+                            <input type="submit" class="btn btn-primary cursor-p" value="Editar" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-4 col-sm-12 pr-0 pt-lg-4 pt-sm-1">
+                @Html.Partial("_ErrorSummary")
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}@model CC.SAD.Dashboard.Application.Identity.UsuarioClaims.UsuarioClaimsViewModel
+@{
+    ViewBag.Title = "Editar claim | SAD";
+}
+<div class="container-d">
+    <div class="container">
+        <div class="row pt-5">
+            <hgroup class="mb-3">
+                <h1 class="col-12 font-weight-bold px-0">EDITAR CLAIM</h1>
+                <h5 class="col-12 font-weight-light px-0">Preencha os campos abaixo para editar a claim do usuário selecionado</h5>
+            </hgroup>
+        </div>
+        @Html.Partial("_MenuUsuarios")
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-6 col-sm-12 px-0">
+                @using (Html.BeginForm("Edit", "UsuarioClaims", FormMethod.Post, new { @class = "", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(x => x.Id)
+                    @Html.HiddenFor(x => x.UserId)
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            @Html.LabelFor(x => x.Username, new { @class = "col-lg-12 px-0 col-form-label text-uppercase f-size-6" })
+                            <p class="f-size-1">@Html.DisplayFor(x => x.Username)</p>
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            @Html.LabelFor(x => x.ClaimType, new { @class = "col-lg-12 px-0 col-form-label text-uppercase f-size-6" })
+                            @Html.DropDownList("ClaimType", null, "Selecione o claim", new { @class = "form-control form-control-lg" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            @Html.LabelFor(x => x.ClaimValue, new { @class = "col-lg-12 px-0 col-form-label text-uppercase f-size-6" })
+                            @Html.TextBoxFor(x => x.ClaimValue, new { @class = "form-control form-control-lg" })
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <a class="btn btn-link" href="@Url.Action("UserClaimDetails","UsuarioClaims", new {page=1,id=Model.UserId})">Voltar</a>
+                            <input type="submit" class="btn btn-primary cursor-p" value="Editar" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-lg-4 col-sm-12 pr-0 pt-lg-4 pt-sm-1">
+                @Html.Partial("_ErrorSummary")
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

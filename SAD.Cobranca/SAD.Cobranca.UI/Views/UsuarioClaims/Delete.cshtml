@@ -1,0 +1,42 @@
+﻿@model SAD.Cobranca.Application.Identity.UsuarioClaims.UsuarioClaimsViewModel
+@{
+    ViewBag.Title = "Remover claim do usuário selecionado | SAD";
+}
+
+<div class="container-d">
+    <div class="container">
+        <div class="row pt-5">
+            <hgroup class="mb-3">
+                <h1 class="col-12 font-weight-bold px-0">REMOVER CLAIM</h1>
+                <h5 class="col-12 font-weight-light px-0">Tem certeza que deseja remover a claim do usuário selecionado?</h5>
+            </hgroup>
+        </div>
+        @Html.Partial("_MenuUsuarios")
+        <div class="row justify-content-lg-start">
+            <div class="col-lg-6 col-sm-12 px-0">
+                <dl class="row no-gutters">
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.Username)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.Username)</dd>
+
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.ClaimType)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.ClaimType)</dd>
+
+                    <dt class="col-lg-2 f-size-6 font-weight-normal text-uppercase">@Html.DisplayNameFor(model => model.ClaimValue)</dt>
+                    <dd class="col-lg-10">@Html.DisplayFor(model => model.ClaimValue)</dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row">
+                        <div class="col-lg-10 offset-lg-2">
+                            <a class="btn btn-link" href="@Url.Action("UserClaimDetails", "UsuarioClaims", new {page = 1, id = Model.UserId})">Voltar</a>
+                            <input class="btn btn-danger cursor-p" type="submit" value="Remover"/>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

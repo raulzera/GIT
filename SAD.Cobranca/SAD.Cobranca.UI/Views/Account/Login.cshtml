@@ -1,0 +1,83 @@
+﻿@using SAD.Cobranca.UI.Models
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="Dashboard" />
+    <link href="/bsc.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body class="bg-light">
+    <div class="container-fluid container-d100">
+        <div class="row justify-content-lg-center">
+            <div class="col col-lg-4">
+                <section class="mt-5 rounded bg-lightt" id="loginForm">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="mx-0 mb-4 px-0 pt-4 pb-2">
+                            <hgroup>
+                                <h1 class="font-weight-bold display-3 text-uppercase text-center">SAD</h1>
+                                <h4 class="font-weight-normal l-spacing-1 text-uppercase text-center">Sistema de apoio a decisão</h4>
+                            </hgroup>
+                        </div>
+
+                        <div class="form-group px-4">
+                            <div class="col-lg-12">
+                                @Html.Partial("_ErrorSummary")
+                            </div>
+                        </div>
+
+                        <div class="form-group px-4">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-lg-12 px-0 text-uppercase text-muted col-form-label f-size-6" })
+                            <div class="col-lg-12 px-0">
+                                @Html.TextBoxFor(m => m.Email, new { type = "Email", placeholder = "Insira seu e-mail", @class = "form-control form-control-lg" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group px-4">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-lg-12 px-0 text-uppercase text-muted col-form-label f-size-6" })
+                            <div class="col-lg-12 px-0">
+                                @Html.PasswordFor(m => m.Password, new { type = "Password", placeholder = "Insira sua senha", @class = "form-control form-control-lg" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group px-4">
+                            <div class="col-lg-12 px-0">
+                                <div class="text-uppercase text-muted">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group p-4">
+                            <div class="col-lg-12 px-0 mb-3">
+                                <input type="submit" value="Entrar" class="btn btn-block btn-success cursor-p text-uppercase font-weight-bold f-size-1 py-3" />
+                            </div>
+                        </div>
+                    }
+                </section>
+            </div>
+        </div>
+        <div class="row fixed-bottom">
+            <div class="col-lg-12">
+                <small class="text-center text-muted pb-2 d-block">CRESPO E CAIRES ADVOGADOS ASSOCIADOS</small>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
